@@ -5,7 +5,7 @@
 ###################################
 
 # Installing SSH
-apt-get update
+apt-get update > /dev/null 2>&1
 apt-get install openssh-client -y > /dev/null 2>&1
 apt-get install openssh-server -y > /dev/null 2>&1
 mkdir ~/.ssh
