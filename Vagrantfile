@@ -88,7 +88,7 @@ Vagrant.configure(2) do |config|
     config.vm.provision :shell, path: "shells/extra.sh"
 
     # Provision LEMP
-    config.vm.provision :shell, path: "shells/lemp.sh"
+    config.vm.provision :shell, path: "shells/lamp.sh"
 
     config.vm.provision :shell, inline: "echo Finished provisioning."
 end
