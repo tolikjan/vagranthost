@@ -35,25 +35,30 @@ The following dependencies are installed using `apt-get` as they are required to
 
 ### Install via Git
 To use Vagrant Box, you should:
-- go to `/var/www/` folder in Terminal (you can use other folder, for this you need configure `config.vm.synced_folder` inside `Vagrantfile`):
+1) go to `/var/www/` folder in Terminal (you can use other folder, for this you need configure `config.vm.synced_folder` inside `Vagrantfile`):
 
     $ cd /var/www
     
-- clone this GitHub Repo with command (use `sudo` if you in protected folder):
+2) clone this GitHub Repo with command (use `sudo` if you in protected folder):
 
     $ sudo git clone https://github.com/tolikjan/vagranthost
 
 ### Usage
-Start the VM (use `sudo` if you in protected folder):
+Start the VM with commands below (use `sudo` if you in protected folder):
 
     $ cd /var/www/vagranthost
     $ sudo vagrant up
 
-First time of your `vagrant up` will get ubuntu image and provision the vagrant. You can see the status of your VM from [http://192.168.33.10](http://192.168.33.10)
+First time of your `vagrant up` will get `Ubuntu_64x` image and provision the vagrant (install all needed dependencies).
+After provision you should connect to you machine with (use `sudo` if you in protected folder):
+
+    $ sudo vagrant ssh
+    
+You can see the status of your VM with URL — [http://192.168.33.10](http://192.168.33.10)
 You can check the `phpinfo` from  [http://192.168.33.10/phpinfo.php](http://192.168.33.10/phpinfo.php)
 
 ### Requirements
-You must have [Vagrant](http://vagrantup.com) and [VirtualBox 5](https://www.virtualbox.org) installed on your PC.
+You must have [Vagrant](http://vagrantup.com) and [VirtualBox 5](https://www.virtualbox.org) installed on your host PC.
 
 
 # Default Credentials
