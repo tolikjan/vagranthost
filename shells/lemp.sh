@@ -5,7 +5,6 @@
 ###################################
 
 # site folder path
-site_path="/usr/share/nginx/html"
 server_name="local.on.vagranthost"
 # www config file
 www_conf="/etc/php5/fpm/pool.d/www.conf"
@@ -13,11 +12,7 @@ www_conf="/etc/php5/fpm/pool.d/www.conf"
 nginx_conf="/etc/nginx/nginx.conf"
 # default nginx config
 default_nginx_conf="/etc/nginx/sites-available/default"
-default_nginx_conf_link="/etc/nginx/sites-enabled/default"
-# phpmyadmin config path
-phpmyadmin_conf="/etc/nginx/phpmyadmin.conf"
 # mysql variables
-mysql_config_file="/etc/mysql/my.cnf"
 mysql_root_user="root"
 mysql_root_password="root"
 
@@ -28,6 +23,9 @@ mysql_root_password="root"
 apt-get update > /dev/null 2>&1
 apt-get install nginx -y > /dev/null 2>&1
 service nginx stop > /dev/null 2>&1
+
+
+
 # Backup default settings for nginx.conf
 cp ${nginx_conf} ${nginx_conf}.backup > /dev/null 2>&1
 # Configure nginx.conf
