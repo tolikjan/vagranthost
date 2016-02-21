@@ -78,9 +78,8 @@ sed -i 's/index.php//' /etc/apache2/mods-enabled/dir.conf > /dev/null 2>&1
 sed -i 's/DirectoryIndex/DirectoryIndex index.php/' /etc/apache2/mods-enabled/dir.conf > /dev/null 2>&1
 
 # Set up xdebug variable
-xdebug=$(find / -name "xdebug.so" 2> /dev/null)
-sleep 150
-echo 'zend_extension_ts="${xdebug}"' >> /etc/php5/cli/php.ini
+# xdebug => find / -name "xdebug.so" 2> /dev/null
+echo 'zend_extension_ts="/usr/lib/php5/20121212/xdebug.so"' >> /etc/php5/cli/php.ini
 echo 'xdebug.remote_autostart=1' >> /etc/php5/cli/php.ini
 echo 'xdebug.remote_enable=1' >> /etc/php5/cli/php.ini
 echo 'xdebug.remote_connect_back=1' >> /etc/php5/cli/php.ini
