@@ -66,11 +66,11 @@
             </tr>
             <tr>
                 <td>MySQL running</td>
-                <td><?php echo ($mysql_running ? 'check' : 'remove'); ?></td>
+                <td><?php echo $mysql_running ? 'check' : 'remove'; ?></td>
             </tr>
             <tr>
                 <td>MySQL version</td>
-                <td><?php echo ($mysql_running ? $mysql_version : 'N/A'); ?></td>
+                <td><?php echo $mysql_running ? $mysql_version : 'N/A'; ?></td>
             </tr>
         </table>
 
@@ -118,7 +118,7 @@
             </tr>
             <tr>
                 <td colspan="2"><em>Note: External access is enabled! Just use
-                    <strong><?php echo "$_SERVER["HTTP_HOST"]" ?></strong> as host.</em></td>
+                    <strong><?php echo $_SERVER["HTTP_HOST"] ?></strong> as host.</em></td>
             </tr>
         </table>
 
@@ -126,7 +126,7 @@
         <table class="table table-striped">
             <tr>
                 <td>URL</td>
-                <td><?php echo "$_SERVER["HTTP_HOST"]" ?>/phpmyadmin</td>
+                <td>http://<?php echo $_SERVER["HTTP_HOST"] ?>/phpmyadmin</td>
             </tr>
             <tr>
                 <td>Username</td>
