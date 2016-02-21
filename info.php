@@ -66,11 +66,11 @@
             </tr>
             <tr>
                 <td>MySQL running</td>
-                <td><?php echo $mysql_running ? 'check' : 'remove'; ?></td>
+                <td><?php echo $mysql_running; ?></td>
             </tr>
             <tr>
                 <td>MySQL version</td>
-                <td><?php echo $mysql_running ? $mysql_version : 'N/A'; ?></td>
+                <td><?php echo $mysql_running; ?></td>
             </tr>
         </table>
 
