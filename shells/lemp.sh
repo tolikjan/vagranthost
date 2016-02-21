@@ -23,9 +23,6 @@ mysql_root_password="root"
 apt-get update > /dev/null 2>&1
 apt-get install nginx -y > /dev/null 2>&1
 service nginx stop > /dev/null 2>&1
-
-
-
 # Backup default settings for nginx.conf
 cp ${nginx_conf} ${nginx_conf}.backup > /dev/null 2>&1
 # Configure nginx.conf
