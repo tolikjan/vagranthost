@@ -29,13 +29,18 @@ echo -ne '\n' | add-apt-repository ppa:nijel/phpmyadmin > /dev/null 2>&1
 echo "mysql-server mysql-server/root_password password root" | debconf-set-selections > /dev/null 2>&1
 echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections > /dev/null 2>&1
 # Set password for phpmyadmin root account
-echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections > /dev/null 2>&1
-echo "phpmyadmin phpmyadmin/app-password-confirm password root" | debconf-set-selections > /dev/null 2>&1
-echo "phpmyadmin phpmyadmin/mysql/admin-pass password root" | debconf-set-selections > /dev/null 2>&1
-echo "phpmyadmin phpmyadmin/mysql/app-pass password root" | debconf-set-selections > /dev/null 2>&1
-echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections > /dev/null 2>&1
+echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/admin-user string root" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/admin-pass password root" | debconf-set-selections
+echo "phpmyadmin phpmyadmin/mysql/app-pass password root" |debconf-set-selections
+echo "phpmyadmin phpmyadmin/app-password-confirm password root" | debconf-set-selections
 # Install mysql-server and phpmyadmin
 apt-get install mysql-server php5-mysql phpmyadmin -y > /dev/null 2>&1
+
+# Disable by default, as this will add to all VirtualHosts; instead, add the following to an Apache VirtualHost:
+echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf
+service apache2 reload
 
 # Create informations
 mysql_install_db > /dev/null 2>&1
