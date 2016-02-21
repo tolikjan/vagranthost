@@ -16,7 +16,7 @@ This vagrant box is configured to use `2048 Mb` of RAM and `2 CPU`. You can chan
 
 - Ubuntu Trusty64 (64-Bit)
 - SSH server
-- NGINX web server
+- NGINX web server _1.1.19_
 - PHP _v5.5.9_ with php5-fpm php5-mysql php5-cli php5-curl php5-gd php5-mcrypt php5-xdebug packages
 - MySQL _v5.5.41_
 - PHPMyAdmin

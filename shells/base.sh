@@ -27,10 +27,6 @@ apt-get update > /dev/null 2>&1
 echo "Upgrading Ubuntu"
 apt-get upgrade -y > /dev/nul 2>&1
 
-# Installing base packages
-echo "Installing Base Packages"
-apt-get install python-software-properties build-essential -y >/dev/null 2>&1
-
 # Configure system to allow more performance
 # "vm.swappiness=10" — means that you system will use swap when you RAM will be full for 90%
 echo "vm.swappiness=10" >> /etc/sysctl.conf
