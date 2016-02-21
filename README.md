@@ -35,18 +35,21 @@ The following dependencies are installed using `apt-get` as they are required to
 
 ### Install via Git
 To use Vagrant Box, you should:
-- create `vagranthost` folder inside your `/var/www/` folder (you can use other folder, for this you need configure `config.vm.synced_folder` inside `Vagrantfile`);
+- go to `/var/www/` folder in Terminal (you can use other folder, for this you need configure `config.vm.synced_folder` inside `Vagrantfile`):
+
+    $ cd /var/www
+    
 - clone this GitHub Repo with command:
 
-    $ git clone https://github.com/tolikjan/php-box
+    $ git clone https://github.com/tolikjan/vagranthost
 
 ### Usage
 Start the VM:
 
-    $ cd "path_to_you_vagranthost_folder"
-    $ vagrant up
+    $ cd /var/www/vagranthost
+    $ sudo vagrant up
 
-First time of your 'vagrant up' will provision the vagrant. You can see the status of your VM from [http://192.168.33.10](http://192.168.33.10)
+First time of your `vagrant up` will provision the vagrant. You can see the status of your VM from [http://192.168.33.10](http://192.168.33.10)
 You can check the `phpinfo` from  [http://192.168.33.10/phpinfo.php](http://192.168.33.10/phpinfo.php) if you copy `phpinfo.php` from Vagrant Box folder to your `vagranthost` folder.
 
 ### Requirements
