@@ -3,6 +3,8 @@
 This Vagrant Box is a simple __Ubuntu Trusty64__ vagrant configuration for LAMP stack (Linux + Apache2 + MySQL + PHPMyAdmin), which also includes some modern development tools.
 
 
+
+
 # Overview
 This Vagrant Box using [ubuntu/trusty64](https://atlas.hashicorp.com/ubuntu/boxes/trusty64) from [Atlas Vagrant Box](https://atlas.hashicorp.com/boxes/search?utm_source=vagrantcloud.com&vagrantcloud=1).
   On your `vagrant up` command, this `Vagrantfile` will automatically download the box.
@@ -12,7 +14,7 @@ This Vagrant Box using [ubuntu/trusty64](https://atlas.hashicorp.com/ubuntu/boxe
 
 This vagrant box is configured to use `2048 Mb` of RAM and `2 CPU`. You can change these configuration in `Vagrantfile`.
  
-## Included packages
+### Included packages
 
 - Ubuntu Trusty64 (64-Bit)
 - SSH server
@@ -29,6 +31,8 @@ The following dependencies are installed using `apt-get` as they are required to
 - cURL
 - python-software-properties
 - build-essential
+
+
 
 
 # Installation
@@ -61,31 +65,36 @@ You can check the `phpinfo` from  [http://192.168.33.10/phpinfo.php](http://192.
 You must have [Vagrant](http://vagrantup.com) and [VirtualBox 5](https://www.virtualbox.org) installed on your host PC.
 
 
+
+
 # Default Credentials
 Here are credentials which set up by default.
 
-## Host Address
+### Host Address
 - Host: 192.168.33.10
 you can change in `Vagrantfile` if you like
  
-## SSH
+### SSH
 - Username: vagrant
 - Password: vagrant
 - Port: 22
 
-## MySQL Credentials
+### MySQL Credentials
 - Username: root
 - Password: root
 - Host: localhost
 - Port: 3306
 
-## PHPMyAdmin
+### PHPMyAdmin
 - URL: 192.168.33.10/phpmyadmin
 - Username: root
 - Password: root
 
-## Host Configuration
+### Host Configuration
 - ONGOING: will be implemented in `config` folder
- 
+
+
+
+
 #### Disclaimer
 This `Vagrantfile` and provision was tested on Ubuntu Desktop 14.04.3 64x.
