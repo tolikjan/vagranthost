@@ -64,7 +64,7 @@ You must have [Vagrant](http://vagrantup.com) and [VirtualBox 5](https://www.vir
 # Default Credentials
 Here are credentials which set up by default.
 
-##Host Address:
+## Host Address
 - Host: 192.168.33.10
 you can change in `Vagrantfile` if you like
  
@@ -85,7 +85,7 @@ you can change in `Vagrantfile` if you like
 - Password: root
 
 ## Host Configuration
-- ONGOING on `config` folder
+- ONGOING: will be implemented in `config` folder
  
-### Disclaimer
+#### Disclaimer
 This `Vagrantfile` and provision was tested on Ubuntu Desktop 14.04.3 64x.
