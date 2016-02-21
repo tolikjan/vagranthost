@@ -39,12 +39,12 @@ To use Vagrant Box, you should:
 
     $ cd /var/www
     
-- clone this GitHub Repo with command:
+- clone this GitHub Repo with command (use `sudo` if you in protected folder):
 
-    $ git clone https://github.com/tolikjan/vagranthost
+    $ sudo git clone https://github.com/tolikjan/vagranthost
 
 ### Usage
-Start the VM:
+Start the VM (use `sudo` if you in protected folder):
 
     $ cd /var/www/vagranthost
     $ sudo vagrant up
