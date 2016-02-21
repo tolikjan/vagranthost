@@ -40,7 +40,7 @@ apt-get install mysql-server php5-mysql phpmyadmin -y > /dev/null 2>&1
 
 # Disable by default, as this will add to all VirtualHosts; instead, add the following to an Apache VirtualHost:
 echo "Include /etc/phpmyadmin/apache.conf" >> /etc/apache2/apache2.conf
-service apache2 reload
+service apache2 reload > /dev/null 2>&1
 
 # Create informations
 mysql_install_db > /dev/null 2>&1
