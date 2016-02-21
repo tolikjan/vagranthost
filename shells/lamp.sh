@@ -63,15 +63,15 @@ php5enmod mcrypt > /dev/null 2>&1
 
 echo "Configuring environment"
 # php.ini error reporting configuring
-sed -i 's/^error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/' /etc/php5/cli/php.ini
-sed -i 's/^display_errors = Off/display_errors = On/' /etc/php5/cli/php.ini
-sed -i 's/^display_startup_errors = Off/display_startup_errors = On/' /etc/php5/cli/php.ini
-sed -i 's/^html_errors = Off/html_errors = On/' /etc/php5/cli/php.ini
-sed -i 's/^;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php5/cli/php.ini
+sed -i 's/^error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/' /etc/php5/apache2/php.ini
+sed -i 's/^display_errors = Off/display_errors = On/' /etc/php5/apache2/php.ini
+sed -i 's/^display_startup_errors = Off/display_startup_errors = On/' /etc/php5/apache2/php.ini
+sed -i 's/^html_errors = Off/html_errors = On/' /etc/php5/apache2/php.ini
+sed -i 's/^;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/' /etc/php5/apache2/php.ini
 
 # Change configuration if you planing to load big files
-sed -i 's/^post_max_size = 8M/post_max_size = 200M/' /etc/php5/cli/php.ini
-sed -i 's/^upload_max_filesize = 2M/upload_max_filesize = 200M/' /etc/php5/cli/php.ini
+sed -i 's/^post_max_size = 8M/post_max_size = 200M/' /etc/php5/apache2/php.ini
+sed -i 's/^upload_max_filesize = 2M/upload_max_filesize = 200M/' /etc/php5/apache2/php.ini
 
 # Sort directory index
 sed -i 's/index.php//' /etc/apache2/mods-enabled/dir.conf > /dev/null 2>&1
@@ -79,19 +79,19 @@ sed -i 's/DirectoryIndex/DirectoryIndex index.php/' /etc/apache2/mods-enabled/di
 
 # Set up xdebug variable
 # xdebug => find / -name "xdebug.so" 2> /dev/null
-echo 'zend_extension_ts="/usr/lib/php5/20121212/xdebug.so"' >> /etc/php5/cli/php.ini
-echo 'xdebug.remote_autostart=1' >> /etc/php5/cli/php.ini
-echo 'xdebug.remote_enable=1' >> /etc/php5/cli/php.ini
-echo 'xdebug.remote_connect_back=1' >> /etc/php5/cli/php.ini
-echo 'xdebug.remote_port=9002' >> /etc/php5/cli/php.ini
-echo 'xdebug.idekey=PHP_STORM' >> /etc/php5/cli/php.ini
-echo 'xdebug.scream=0' >> /etc/php5/cli/php.ini
-echo 'xdebug.cli_color=1' >> /etc/php5/cli/php.ini
-echo 'xdebug.show_local_vars=1' >> /etc/php5/cli/php.ini
-echo ';var_dump display' >> /etc/php5/cli/php.ini
-echo 'xdebug.var_display_max_depth = 5' >> /etc/php5/cli/php.ini
-echo 'xdebug.var_display_max_children = 256' >> /etc/php5/cli/php.ini
-echo 'xdebug.var_display_max_data = 1024' >> /etc/php5/cli/php.ini
+echo 'zend_extension_ts="/usr/lib/php5/20121212/xdebug.so"' >> /etc/php5/apache2/php.ini
+echo 'xdebug.remote_autostart=1' >> /etc/php5/apache2/php.ini
+echo 'xdebug.remote_enable=1' >> /etc/php5/apache2/php.ini
+echo 'xdebug.remote_connect_back=1' >> /etc/php5/apache2/php.ini
+echo 'xdebug.remote_port=9002' >> /etc/php5/apache2/php.ini
+echo 'xdebug.idekey=PHP_STORM' >> /etc/php5/apache2/php.ini
+echo 'xdebug.scream=0' >> /etc/php5/apache2/php.ini
+echo 'xdebug.cli_color=1' >> /etc/php5/apache2/php.ini
+echo 'xdebug.show_local_vars=1' >> /etc/php5/apache2/php.ini
+echo ';var_dump display' >> /etc/php5/apache2/php.ini
+echo 'xdebug.var_display_max_depth = 5' >> /etc/php5/apache2/php.ini
+echo 'xdebug.var_display_max_children = 256' >> /etc/php5/apache2/php.ini
+echo 'xdebug.var_display_max_data = 1024' >> /etc/php5/apache2/php.ini
 
 echo "Restarting services"
 # Restart mysql service

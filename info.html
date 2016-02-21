@@ -118,7 +118,7 @@
             </tr>
             <tr>
                 <td colspan="2"><em>Note: External access is enabled! Just use
-                    <strong>http://192.168.33.10/</strong> as host.</em></td>
+                    <strong><?php echo "$_SERVER["HTTP_HOST"]" ?></strong> as host.</em></td>
             </tr>
         </table>
 
@@ -126,7 +126,7 @@
         <table class="table table-striped">
             <tr>
                 <td>URL</td>
-                <td>http://192.168.33.10/phpmyadmin</td>
+                <td><?php echo "$_SERVER["HTTP_HOST"]" ?>/phpmyadmin</td>
             </tr>
             <tr>
                 <td>Username</td>
@@ -164,7 +164,7 @@
             <div class="pull-left">
                 <a href="https://github.com/tolikjan/vagranthost" target="_blank">
                     Vagrant Box with LAMP stack
-                </a> by <a href="https://github.com/tolikjan" traget="_blank">tolikjan</a>.
+                </a> by <a href="https://github.com/tolikjan" target="_blank">tolikjan</a>.
             </div>
         </p>
     </div>
