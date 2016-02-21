@@ -58,51 +58,47 @@
             The Virtual Machine is up and running! Hooray! Here's some additional information which you may need.
         </p>
 
-
         <h3>Included packages</h3>
         <table class="table table-striped">
             <tr>
                 <td>PHP Version</td>
                 <td><?php echo phpversion(); ?><p class="pull-right">Check <a href="phpinfo.php">phpinfo</a></p></td>
             </tr>
-
             <tr>
                 <td>MySQL running</td>
                 <td><?php echo ($mysql_running ? 'check' : 'remove'); ?></td>
             </tr>
-
             <tr>
                 <td>MySQL version</td>
                 <td><?php echo ($mysql_running ? $mysql_version : 'N/A'); ?></td>
             </tr>
-
         </table>
 
         <h3>PHP Modules</h3>
         <table class="table table-striped">
             <tr>
-                <td>MySQL</td>
-                <td><?php echo (class_exists('mysqli') ? 'check' : 'remove'); ?></td>
+                <td>Apache</td>
+                <td>2.4.7</td>
             </tr>
-
+            <tr>
+                <td>MySQL</td>
+                <td>5.5.47</td>
+            </tr>
             <tr>
                 <td>cURL</td>
                 <td><?php echo (function_exists('curl_init') ? 'check' : 'remove'); ?></td>
             </tr>
-
             <tr>
                 <td>mcrypt</td>
                 <td><?php echo (function_exists('mcrypt_encrypt') ? 'check' : 'remove'); ?></td>
             </tr>
-
             <tr>
                 <td>gd</td>
                 <td><?php echo (function_exists('imagecreate') ? 'check' : 'remove'); ?></td>
             </tr>
-
             <tr>
                 <td>xDebug</td>
-                <td><?php echo (function_exists('xdebug_get_code_coverage') ? 'check' : 'remove'); ?></td>
+                <td>2.2.3</td>
             </tr>
         </table>
 
@@ -112,17 +108,14 @@
                 <td>Hostname</td>
                 <td>localhost</td>
             </tr>
-
             <tr>
                 <td>Username</td>
                 <td>root</td>
             </tr>
-
             <tr>
                 <td>Password</td>
                 <td>root</td>
             </tr>
-
             <tr>
                 <td colspan="2"><em>Note: External access is enabled! Just use <strong>
                 <?php echo $_SERVER['SERVER_ADDR'] ?></strong> as host.</em></td>
@@ -133,14 +126,12 @@
         <table class="table table-striped">
             <tr>
                 <td>URL</td>
-                <td>http:://<?php echo $_SERVER['SERVER_ADDR'] ?>/phpmyadmin</td>
+                <td>http://<?php echo $_SERVER['SERVER_ADDR'] ?>/phpmyadmin</td>
             </tr>
-
             <tr>
                 <td>Username</td>
                 <td>root</td>
             </tr>
-
             <tr>
                 <td>Password</td>
                 <td>root</td>
@@ -151,9 +142,15 @@
         <table class="table table-striped">
             <tr>
                 <td>Git</td>
+                <td>v1.9.1 with tig tool</td>
             </tr>
             <tr>
                 <td>Composer</td>
+                <td>v1.0-dev</td>
+            </tr>
+            <tr>
+                <td>PHPMyAdmin</td>
+                <td>4.0.10deb1</td>
             </tr>
         </table>
     </div>
