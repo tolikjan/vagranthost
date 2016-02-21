@@ -53,7 +53,7 @@ Vagrant.configure(2) do |config|
     # the path on the host to the actual folder. The second argument is
     # the path on the guest to mount the folder. And the optional third
     # argument is a set of non-required options.
-    config.vm.synced_folder "/var/www/vagranthost" , "/usr/share/nginx/html",
+    config.vm.synced_folder "/var/www/vagranthost" , "/var/www/html",
         group: "www-data",
         owner: "vagrant",
         mount_options: ['dmode=777', 'fmode=777']
@@ -84,10 +84,10 @@ Vagrant.configure(2) do |config|
     # Provision Base Packages
     config.vm.provision :shell, path: "shells/base.sh", args: [server_timezone]
 
-    # Provision Extra Package
+    # Provision Extra Packages
     config.vm.provision :shell, path: "shells/extra.sh"
 
-    # Provision LEMP
+    # Provision LAMP
     config.vm.provision :shell, path: "shells/lamp.sh"
 
     config.vm.provision :shell, inline: "echo Finished provisioning."

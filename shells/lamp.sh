@@ -18,13 +18,13 @@ a2enmod rewrite > /dev/null 2>&1
 # Enable mod_ssl
 a2enmod ssl > /dev/null 2>&1
 
-
 ###################################
 #        Installing MySQL         #
 ###################################
 
 apt-get update > /dev/null 2>&1
 apt-get install debconf-utils -y > /dev/null 2>&1
+echo -ne '\n' | add-apt-repository ppa:nijel/phpmyadmin > /dev/null 2>&1
 # Set password for MySQL root account
 echo "mysql-server mysql-server/root_password password root" | debconf-set-selections > /dev/null 2>&1
 echo "mysql-server mysql-server/root_password_again password root" | debconf-set-selections > /dev/null 2>&1
@@ -33,7 +33,7 @@ echo "phpmyadmin phpmyadmin/dbconfig-install boolean true" | debconf-set-selecti
 echo "phpmyadmin phpmyadmin/app-password-confirm password root" | debconf-set-selections > /dev/null 2>&1
 echo "phpmyadmin phpmyadmin/mysql/admin-pass password root" | debconf-set-selections > /dev/null 2>&1
 echo "phpmyadmin phpmyadmin/mysql/app-pass password root" | debconf-set-selections > /dev/null 2>&1
-echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect none" | debconf-set-selections > /dev/null 2>&1
+echo "phpmyadmin phpmyadmin/reconfigure-webserver multiselect apache2" | debconf-set-selections > /dev/null 2>&1
 # Install mysql-server and phpmyadmin
 apt-get install mysql-server php5-mysql phpmyadmin -y > /dev/null 2>&1
 
@@ -56,6 +56,7 @@ apt-get install php5 php5-common php5-dev php5-cli php5-gd php5-mcrypt php5-mysq
 # Enable php5-mcrypt mode
 php5enmod mcrypt > /dev/null 2>&1
 
+echo "Configuring environment"
 # php.ini error reporting configuring
 sed -i 's/^error_reporting = E_ALL & ~E_DEPRECATED & ~E_STRICT/error_reporting = E_ALL/' /etc/php5/cli/php.ini
 sed -i 's/^display_errors = Off/display_errors = On/' /etc/php5/cli/php.ini
@@ -73,7 +74,7 @@ sed -i 's/DirectoryIndex/DirectoryIndex index.php/' /etc/apache2/mods-enabled/di
 
 # Set up xdebug variable
 xdebug=$(find / -name "xdebug.so" 2> /dev/null)
-sleep 120
+sleep 150
 echo 'zend_extension_ts="${xdebug}"' >> /etc/php5/cli/php.ini
 echo 'xdebug.remote_autostart=1' >> /etc/php5/cli/php.ini
 echo 'xdebug.remote_enable=1' >> /etc/php5/cli/php.ini
@@ -88,8 +89,8 @@ echo 'xdebug.var_display_max_depth = 5' >> /etc/php5/cli/php.ini
 echo 'xdebug.var_display_max_children = 256' >> /etc/php5/cli/php.ini
 echo 'xdebug.var_display_max_data = 1024' >> /etc/php5/cli/php.ini
 
+echo "Restarting services"
 # Restart mysql service
 service mysql restart > /dev/null 2>&1
-
 # Restart apache2 to reload the configuration
 service apache2 restart > /dev/null 2>&1
