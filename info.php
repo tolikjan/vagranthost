@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <title>PHP Vagrant Box</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet" />
-    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://netdna.bootstrapcdn.com/font-awesome/3.1.1/css/font-awesome.min.css" rel="stylesheet" />
     <style type="text/css">
         html, body {
             height: 100%;
+            min-width: 580px;
         }
         #wrap {
             min-height: 100%;
@@ -32,7 +33,7 @@
         }
         .container {
             width: auto;
-            max-width: 680px;
+            max-width: 740px;
         }
         .container .credit {
             margin: 20px 0;
@@ -51,11 +52,11 @@
 <div id="wrap">
     <div class="container">
         <div class="page-header">
-            <i class="fa fa-lightbulb-o fa-4x"></i>
+            <i class="icon-spinner icon-spin icon-3x"></i>
             <h1>It works!</h1>
         </div>
         <p class="lead">
-            The Virtual Machine is up and running! Hooray! Here's some additional information which you may need.
+            The Virtual Machine is up and running! Hooray! Here some additional information which you may need.
         </p>
 
         <h3>Included packages</h3>
@@ -65,40 +66,83 @@
                 <td><?php echo phpversion(); ?><p class="pull-right">Check <a href="phpinfo.php">phpinfo</a></p></td>
             </tr>
             <tr>
-                <td>MySQL running</td>
-                <td><?php echo $mysql_running; ?></td>
-            </tr>
-            <tr>
                 <td>MySQL version</td>
-                <td><?php echo $mysql_running; ?></td>
+                <td>
+                    <?php
+                        $mysqli = new mysqli("localhost", "root", "root");
+                        /* Check the connection */
+                        if (mysqli_connect_errno()) {
+                            printf("Connect failed: %s\n", mysqli_connect_error());
+                            exit();
+                        }
+                        /* Server version */
+                        printf($mysqli->server_info);
+                        /* Close connection */
+                        $mysqli->close();
+                    ?>
+                </td>
+                <tr>
+                    <td>Apache</td>
+                    <td><?php echo apache_get_version(); ?></td>
+                </tr>
             </tr>
         </table>
 
         <h3>PHP Modules</h3>
         <table class="table table-striped">
             <tr>
-                <td>Apache</td>
-                <td>2.4.7</td>
-            </tr>
-            <tr>
-                <td>MySQL</td>
-                <td>5.5.47</td>
-            </tr>
-            <tr>
                 <td>cURL</td>
-                <td><?php echo (function_exists('curl_init') ? 'check' : 'remove'); ?></td>
+                <td>
+                <?php
+                    /* Get the array with info about curl */
+                    $version = curl_version();
+                    /* Check curl possibilities */
+                    $bitfields = Array(
+                      'CURL_VERSION_IPV6',
+                      'CURL_VERSION_KERBEROS4',
+                      'CURL_VERSION_SSL',
+                      'CURL_VERSION_LIBZ',
+                    );
+                    foreach($bitfields as $feature)
+                    {
+                        echo $feature . ($version['features'] & constant($feature) ? ' — present' : ' — not present');
+                        echo "</ br>";
+                        echo PHP_EOL;
+                    }
+                    ?>
+                </td>
             </tr>
             <tr>
                 <td>mcrypt</td>
-                <td><?php echo (function_exists('mcrypt_encrypt') ? 'check' : 'remove'); ?></td>
+                <td>
+                    <?php
+                        if(function_exists("mcrypt_encrypt")) {
+                            echo "mcrypt is present";
+                        } else {
+                            echo "mcrypt isn't present";
+                        }
+                        ?>
+                </td>
             </tr>
             <tr>
                 <td>gd</td>
-                <td><?php echo (function_exists('imagecreate') ? 'check' : 'remove'); ?></td>
+                <td>
+                    <?php
+                        $gdInfoArray = gd_info();
+                        foreach ($gdInfoArray as $key => $value) {
+                            echo $key . "  |  " .  $value . "<br />";
+                        }
+                        ?>
+                </td>
             </tr>
             <tr>
                 <td>xDebug</td>
-                <td>2.2.3</td>
+                <td>
+                    <?php
+                        exec('php -v | grep -i "xdebug"', $xdebug_version);
+                        echo $xdebug_version[0];
+                        ?>
+                </td>
             </tr>
         </table>
 
@@ -142,15 +186,20 @@
         <table class="table table-striped">
             <tr>
                 <td>Git</td>
-                <td>v1.9.1 with tig tool</td>
+                <td>
+                    <?php
+                        exec('git --version', $git_version);
+                        echo $git_version[0];
+                        ?>
+                </td>
             </tr>
             <tr>
                 <td>Composer</td>
-                <td>v1.0-dev</td>
-            </tr>
-            <tr>
-                <td>PHPMyAdmin</td>
-                <td>4.0.10deb1</td>
+                <td><?php
+                    exec('composer -V', $composer_version);
+                    echo $composer_version[0];
+                    ?>
+                </td>
             </tr>
         </table>
     </div>
