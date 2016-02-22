@@ -52,7 +52,7 @@ After provision you should connect to you machine with (use `sudo` if you in pro
 
     $ sudo vagrant ssh
     
-You can see the status of your VM with URL — [http://192.168.33.10/info.html](http://192.168.33.10/info.html)
+You can see the status of your VM with URL — [http://192.168.33.10/info.php](http://192.168.33.10/info.php)
 You can check the `phpinfo` from  [http://192.168.33.10/phpinfo.php](http://192.168.33.10/phpinfo.php)
 
 ### Requirements
