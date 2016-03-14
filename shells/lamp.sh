@@ -8,7 +8,7 @@
 echo "Installing Apache2"
 apt-get install apache2 libapache2-mod-php5 -y > /dev/null 2>&1
 
-# Config servername
+# Config server name
 echo "ServerName localhost" > /etc/apache2/conf-available/fqdn.conf
 a2enconf fqdn > /dev/null 2>&1
 
@@ -79,19 +79,21 @@ sed -i 's/DirectoryIndex/DirectoryIndex index.php/' /etc/apache2/mods-enabled/di
 
 # Set up xdebug variable
 # xdebug => find / -name "xdebug.so" 2> /dev/null
-echo 'zend_extension_ts="/usr/lib/php5/20121212/xdebug.so"' >> /etc/php5/apache2/php.ini
-echo 'xdebug.remote_autostart=1' >> /etc/php5/apache2/php.ini
-echo 'xdebug.remote_enable=1' >> /etc/php5/apache2/php.ini
-echo 'xdebug.remote_connect_back=1' >> /etc/php5/apache2/php.ini
-echo 'xdebug.remote_port=9002' >> /etc/php5/apache2/php.ini
-echo 'xdebug.idekey=PHP_STORM' >> /etc/php5/apache2/php.ini
-echo 'xdebug.scream=0' >> /etc/php5/apache2/php.ini
-echo 'xdebug.cli_color=1' >> /etc/php5/apache2/php.ini
-echo 'xdebug.show_local_vars=1' >> /etc/php5/apache2/php.ini
-echo ';var_dump display' >> /etc/php5/apache2/php.ini
-echo 'xdebug.var_display_max_depth = 5' >> /etc/php5/apache2/php.ini
-echo 'xdebug.var_display_max_children = 256' >> /etc/php5/apache2/php.ini
-echo 'xdebug.var_display_max_data = 1024' >> /etc/php5/apache2/php.ini
+XDEBUG="$(find / -name "xdebug.so" 2> /dev/null)"
+
+echo "zend_extension_ts=\"${XDEBUG}\"" >> /etc/php5/apache2/php.ini
+echo "xdebug.remote_autostart=1" >> /etc/php5/apache2/php.ini
+echo "xdebug.remote_enable=1" >> /etc/php5/apache2/php.ini
+echo "xdebug.remote_connect_back=1" >> /etc/php5/apache2/php.ini
+echo "xdebug.remote_port=9002" >> /etc/php5/apache2/php.ini
+echo "xdebug.idekey=PHP_STORM" >> /etc/php5/apache2/php.ini
+echo "xdebug.scream=0" >> /etc/php5/apache2/php.ini
+echo "xdebug.cli_color=1" >> /etc/php5/apache2/php.ini
+echo "xdebug.show_local_vars=1" >> /etc/php5/apache2/php.ini
+echo ";var_dump display" >> /etc/php5/apache2/php.ini
+echo "xdebug.var_display_max_depth = 5" >> /etc/php5/apache2/php.ini
+echo "xdebug.var_display_max_children = 256" >> /etc/php5/apache2/php.ini
+echo "xdebug.var_display_max_data = 1024" >> /etc/php5/apache2/php.ini
 
 echo "Restarting services"
 # Restart mysql service
