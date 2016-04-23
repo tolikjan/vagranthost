@@ -52,6 +52,7 @@ After provision you should connect to you machine with (use `sudo` if you in pro
 
     $ sudo vagrant ssh
 
+### XDebug
 For connecting to `xdebug` via IDE, you should connect to (in IDE settings) — `/var/www/vagranthost/apache2/php.ini`
 
 You can see the status of your VM with URL — [http://192.168.33.10/info.php](http://192.168.33.10/info.php)
