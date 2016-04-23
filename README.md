@@ -48,15 +48,16 @@ Start the VM with commands below (use `sudo` if you in protected folder):
     $ sudo vagrant up
 
 First time of your `vagrant up` will get `Ubuntu_64x` image and provision the vagrant (install all needed dependencies).
+
+You can see the status of your VM with URL — [http://192.168.33.10/info.php](http://192.168.33.10/info.php)
+You can check the `phpinfo` from  [http://192.168.33.10/phpinfo.php](http://192.168.33.10/phpinfo.php)
+
 After provision you should connect to you machine with (use `sudo` if you in protected folder):
 
     $ sudo vagrant ssh
 
 ### XDebug
-For connecting to `xdebug` via IDE, you should connect to (in IDE settings) — `/var/www/vagranthost/apache2/php.ini`
-
-You can see the status of your VM with URL — [http://192.168.33.10/info.php](http://192.168.33.10/info.php)
-You can check the `phpinfo` from  [http://192.168.33.10/phpinfo.php](http://192.168.33.10/phpinfo.php)
+For connecting to `xdebug` via IDE, you should connect(in IDE settings) to — `/var/www/vagranthost/apache2/php.ini`
 
 ### Requirements
 You must have [Vagrant](http://vagrantup.com) and [VirtualBox 5](https://www.virtualbox.org) installed on your host PC.
