@@ -81,16 +81,20 @@ sed -i 's/DirectoryIndex/DirectoryIndex index.php/' /etc/apache2/mods-enabled/di
 # xdebug => find / -name "xdebug.so" 2> /dev/null
 XDEBUG="$(find / -name "xdebug.so" 2> /dev/null)"
 
-echo "zend_extension_ts=\"${XDEBUG}\"" >> /etc/php5/apache2/php.ini
+echo "zend_extension=\"${XDEBUG}\"" >> /etc/php5/apache2/php.ini
+echo "memory_limit=-1" >> /etc/php5/apache2/php.ini
+echo "xdebug.profiler_enable=1" >> /etc/php5/apache2/php.ini
 echo "xdebug.remote_autostart=1" >> /etc/php5/apache2/php.ini
 echo "xdebug.remote_enable=1" >> /etc/php5/apache2/php.ini
+echo "xdebug_enable=1" >> /etc/php5/apache2/php.ini
 echo "xdebug.remote_connect_back=1" >> /etc/php5/apache2/php.ini
 echo "xdebug.remote_port=9002" >> /etc/php5/apache2/php.ini
 echo "xdebug.idekey=PHP_STORM" >> /etc/php5/apache2/php.ini
 echo "xdebug.scream=0" >> /etc/php5/apache2/php.ini
 echo "xdebug.cli_color=1" >> /etc/php5/apache2/php.ini
 echo "xdebug.show_local_vars=1" >> /etc/php5/apache2/php.ini
-echo ";var_dump display" >> /etc/php5/apache2/php.ini
+echo "xdebug.remote_connect_back = 1" >> /etc/php5/apache2/php.ini
+echo ";var_dump display" >>/etc/php5/apache2/php.ini
 echo "xdebug.var_display_max_depth = 5" >> /etc/php5/apache2/php.ini
 echo "xdebug.var_display_max_children = 256" >> /etc/php5/apache2/php.ini
 echo "xdebug.var_display_max_data = 1024" >> /etc/php5/apache2/php.ini

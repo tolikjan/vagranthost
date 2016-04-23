@@ -15,7 +15,7 @@ This vagrant box is configured to use `2048 Mb` of RAM and `2 CPU`. You can chan
 
 - Ubuntu Trusty64 (64-Bit)
 - SSH server
-- NGINX web server _1.1.19_
+- Apache/2.4.7 web server
 - PHP _v5.5.9_ with php5-fpm php5-mysql php5-cli php5-curl php5-gd php5-mcrypt php5-xdebug packages
 - MySQL _5.5.47-0_
 - PHPMyAdmin _4.0.10deb1_
@@ -51,7 +51,9 @@ First time of your `vagrant up` will get `Ubuntu_64x` image and provision the va
 After provision you should connect to you machine with (use `sudo` if you in protected folder):
 
     $ sudo vagrant ssh
-    
+
+For connecting to `xdebug` via IDE, you should connect to (in IDE settings) — `/var/www/vagranthost/apache2/php.ini`
+
 You can see the status of your VM with URL — [http://192.168.33.10/info.php](http://192.168.33.10/info.php)
 You can check the `phpinfo` from  [http://192.168.33.10/phpinfo.php](http://192.168.33.10/phpinfo.php)
 
@@ -63,7 +65,7 @@ Here are credentials which set up by default.
 
 ### Host Address
 - Host: 192.168.33.10
-you can change in `Vagrantfile` if you like
+you can change it in `Vagrantfile` if you like
  
 ### SSH
 - Username: vagrant
