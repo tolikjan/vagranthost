@@ -23,3 +23,6 @@ curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
 chmod 777 -R ~/.composer/
 # Add code sniffer support:
 composer global require drupal/coder
+composer global update drupal/coder --prefer-source
+export PATH="$PATH:$HOME/.composer/vendor/bin"
+phpcs --config-set installed_paths ~/.composer/vendor/drupal/coder/coder_sniffer
