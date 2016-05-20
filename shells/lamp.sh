@@ -99,6 +99,12 @@ echo "xdebug.var_display_max_depth = 5" >> /etc/php5/apache2/php.ini
 echo "xdebug.var_display_max_children = 256" >> /etc/php5/apache2/php.ini
 echo "xdebug.var_display_max_data = 1024" >> /etc/php5/apache2/php.ini
 
+# Set up pdo extensions
+echo "extension=pdo.so" >> /etc/php5/apache2/php.ini
+echo "extension=pdo_sqlite.so" >> /etc/php5/apache2/php.ini
+echo "extension=pdo_mysql.so" >> /etc/php5/apache2/php.ini
+echo "extension=sqlite.so" >> /etc/php5/apache2/php.ini
+
 echo "Restarting services"
 # Restart mysql service
 service mysql restart > /dev/null 2>&1
