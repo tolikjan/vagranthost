@@ -63,7 +63,7 @@ Vagrant.configure(2) do |config|
         owner: "vagrant",
         mount_options: ['dmode=777', 'fmode=777']
     # For Drupal Code Sniffer:
-    config.vm.synced_folder "/var/www/vagranthost" , ".config/composer/vendor/drupal/coder/coder_sniffer",
+    config.vm.synced_folder "/var/www/vagranthost" , "/.config/composer/vendor/drupal/coder/coder_sniffer",
         group: "www-data",
         owner: "vagrant",
         mount_options: ['dmode=777', 'fmode=777']
