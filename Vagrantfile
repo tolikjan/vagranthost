@@ -57,16 +57,6 @@ Vagrant.configure(2) do |config|
         group: "www-data",
         owner: "vagrant",
         mount_options: ['dmode=777', 'fmode=777']
-    # It is necessary to "reach" the php.ini file with xdebug via your IDE
-    config.vm.synced_folder "/var/www/vagranthost/phpini" , "/etc/php5/apache2",
-        group: "www-data",
-        owner: "vagrant",
-        mount_options: ['dmode=777', 'fmode=777']
-    # For Drupal Code Sniffer:
-    config.vm.synced_folder "/var/www/vagranthost/composer" , "/.composer/vendor/drupal/coder/coder_sniffer",
-        group: "www-data",
-        owner: "vagrant",
-        mount_options: ['dmode=777', 'fmode=777']
     
     # Replicate local .gitconfig file if it exists
     if File.file?(File.expand_path("~/.gitconfig"))
