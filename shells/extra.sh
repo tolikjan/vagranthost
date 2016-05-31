@@ -19,5 +19,4 @@ apt-get install tig -y > /dev/null 2>&1
 echo "Installing Composer"
 apt-get update > /dev/null 2>&1
 apt-get install curl php5-cli php5-curl -y > /dev/null 2>&1
-curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin
-ln -s /usr/local/bin/composer.phar /usr/local/bin/composer
+curl -sS https://getcomposer.org/installer | sudo php -- --install- dir=/usr/local/bin --filename=composer
